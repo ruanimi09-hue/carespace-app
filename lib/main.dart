@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'onboarding/mode_selection.dart';
+import 'home/dashboard_screen.dart';
+
 
 
 void main() {
@@ -14,7 +16,7 @@ class CareSpaceApp extends StatelessWidget {
     return MaterialApp(
       title: 'CareSpace',
       debugShowCheckedModeBanner: false,
-      home: const ModeSelectionScreen(),
+      home: const home: const DashboardScreen(),
     );
   }
 }
