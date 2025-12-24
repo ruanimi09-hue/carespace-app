@@ -64,6 +64,13 @@ class _DailyCheckInScreenState extends State<DailyCheckInScreen> {
             ElevatedButton(
               onPressed: saveCheckIn,
               child: const Text('Save'),
+              style: ElevatedButton.styleFrom(
+  backgroundColor: Colors.blueGrey,
+  padding: const EdgeInsets.symmetric(vertical: 14),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(14),
+  ),
+),
             ),
           ],
         ),

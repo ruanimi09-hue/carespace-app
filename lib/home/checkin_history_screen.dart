@@ -28,24 +28,11 @@ class CheckInHistoryScreen extends StatelessWidget {
                 final checkIn = checkIns[index];
 
                 return Card(
-                  margin: const EdgeInsets.only(bottom: 16),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          _formatDate(checkIn.date),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        Text('Feeling: ${checkIn.feeling}'),
-                        const SizedBox(height: 8),
-                        Text('Thoughts: ${checkIn.thoughts}'),
-                        const SizedBox(height: 8),
-                        Text('What mattered: ${checkIn.value}'),
+  elevation: 2,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(14),
+  ),
+
                       ],
                     ),
                   ),

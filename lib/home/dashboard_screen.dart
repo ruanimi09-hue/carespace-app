@@ -11,7 +11,7 @@ class DashboardScreen extends StatelessWidget {
   final user = LocalUserService.user;
 
   if (user == null) {
-    return 'Welcome back. Take a moment for yourself.';
+    return 'Welcome back 🌱. Take a moment for yourself.';
   }
 
   if (user.role == 'student') {
