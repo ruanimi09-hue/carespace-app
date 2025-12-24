@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'work_context_selection.dart';
+import '../models/user_profile_model.dart';
+import '../services/local_user_service.dart';
+import '../home/dashboard_screen.dart';
+
 
 
 class RoleSelectionScreen extends StatelessWidget {
@@ -44,10 +48,17 @@ class RoleSelectionScreen extends StatelessWidget {
                   'Medical, dental, nursing, psychology, or other healthcare students',
               icon: Icons.school_outlined,
               onTap: onTap: () {
-  Navigator.push(
+  LocalUserService.saveUser(
+    UserProfile(
+      mode: 'healthcare',
+      role: 'student',
+    ),
+  );
+
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(
-      builder: (_) => const WorkContextSelectionScreen(),
+      builder: (_) => const DashboardScreen(),
     ),
   );
 },
@@ -61,20 +72,21 @@ class RoleSelectionScreen extends StatelessWidget {
                   'Healthcare professionals currently working in clinical or related roles',
               icon: Icons.badge_outlined,
               onTap: onTap: () {
-  Navigator.push(
+  LocalUserService.saveUser(
+    UserProfile(
+      mode: 'healthcare',
+      role: 'professional',
+    ),
+  );
+
+  Navigator.pushReplacement(
     context,
     MaterialPageRoute(
-      builder: (_) => const WorkContextSelectionScreen(),
+      builder: (_) => const DashboardScreen(),
     ),
   );
 },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+
 
 class _RoleCard extends StatelessWidget {
   final String title;
