@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'daily_checkin_screen.dart';
 import '../services/local_user_service.dart';
 import 'checkin_history_screen.dart';
+import 'insights_screen.dart';
+
 
 
 
@@ -86,10 +88,15 @@ class DashboardScreen extends StatelessWidget {
               subtitle:
                   'View gentle patterns over time. No judgement, just awareness.',
               icon: Icons.bar_chart_outlined,
-              onTap: () {
-                // Later: navigate to insights screen
-              },
-            ),
+              onTap:onTap: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const InsightsScreen(),
+    ),
+  );
+},
+
 
             const SizedBox(height: 20),
 
