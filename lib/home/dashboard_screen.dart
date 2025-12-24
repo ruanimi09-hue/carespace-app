@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
 import 'daily_checkin_screen.dart';
+import '../services/local_user_service.dart';
+
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
+  String getSubtitleText() {
+  final user = LocalUserService.user;
+
+  if (user == null) {
+    return 'Welcome back. Take a moment for yourself.';
+  }
+
+  if (user.role == 'student') {
+    return 'Balancing learning and pressure isn’t easy. This space is for you.';
+  }
+
+  if (user.role == 'professional') {
+    return 'Caring for others can be demanding. Take a moment to pause.';
+  }
+
+  return 'Welcome back. Take a moment for yourself.';
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +52,13 @@ class DashboardScreen extends StatelessWidget {
             const SizedBox(height: 8),
 
             const Text(
-              'You don’t have to feel a certain way to begin.',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black54,
-              ),
-            ),
+  getSubtitleText(),
+  style: const TextStyle(
+    fontSize: 16,
+    color: Colors.black54,
+  ),
+),
+
 
             const SizedBox(height: 32),
 
