@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'work_context_selection.dart';
 
-
-class RoleSelectionScreen extends StatelessWidget {
-  const RoleSelectionScreen({super.key});
+class WorkContextSelectionScreen extends StatelessWidget {
+  const WorkContextSelectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +11,7 @@ class RoleSelectionScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
-        title: const Text('Your Role'),
+        title: const Text('Work Context'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -22,7 +20,7 @@ class RoleSelectionScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             const Text(
-              'Tell us a bit about yourself',
+              'Your current work setting',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
@@ -30,44 +28,54 @@ class RoleSelectionScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              'This helps CareSpace adapt its tone and experience for you.',
+              'This helps CareSpace understand the kind of demands you may be facing.',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 32),
 
-            _RoleCard(
-              title: 'Student',
-              subtitle:
-                  'Medical, dental, nursing, psychology, or other healthcare students',
-              icon: Icons.school_outlined,
-              onTap: onTap: () {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => const WorkContextSelectionScreen(),
-    ),
-  );
-},
+            _ContextCard(
+              title: 'Clinical',
+              subtitle: 'Hospitals, clinics, patient-facing roles',
+              icon: Icons.local_hospital_outlined,
+              onTap: () {
+                // Later: save context = clinical
+              },
+            ),
 
+            const SizedBox(height: 16),
 
-            const SizedBox(height: 20),
+            _ContextCard(
+              title: 'Academic / Student',
+              subtitle: 'Classes, exams, research, training',
+              icon: Icons.menu_book_outlined,
+              onTap: () {
+                // Later: save context = academic
+              },
+            ),
 
-            _RoleCard(
-              title: 'Working Professional',
-              subtitle:
-                  'Healthcare professionals currently working in clinical or related roles',
-              icon: Icons.badge_outlined,
-              onTap: onTap: () {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => const WorkContextSelectionScreen(),
-    ),
-  );
-},
+            const SizedBox(height: 16),
+
+            _ContextCard(
+              title: 'Shift-based Work',
+              subtitle: 'Night shifts, long hours, rotating schedules',
+              icon: Icons.schedule_outlined,
+              onTap: () {
+                // Later: save context = shift
+              },
+            ),
+
+            const SizedBox(height: 16),
+
+            _ContextCard(
+              title: 'Non-clinical / Administrative',
+              subtitle: 'Management, documentation, coordination roles',
+              icon: Icons.work_outline,
+              onTap: () {
+                // Later: save context = non-clinical
+              },
             ),
           ],
         ),
@@ -76,13 +84,13 @@ class RoleSelectionScreen extends StatelessWidget {
   }
 }
 
-class _RoleCard extends StatelessWidget {
+class _ContextCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
   final VoidCallback onTap;
 
-  const _RoleCard({
+  const _ContextCard({
     required this.title,
     required this.subtitle,
     required this.icon,
@@ -109,7 +117,7 @@ class _RoleCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, size: 36, color: Colors.blueGrey),
+            Icon(icon, size: 34, color: Colors.blueGrey),
             const SizedBox(width: 16),
             Expanded(
               child: Column(
