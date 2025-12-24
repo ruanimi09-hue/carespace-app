@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'daily_checkin_screen.dart';
 import '../services/local_user_service.dart';
+import 'checkin_history_screen.dart';
+
 
 
 class DashboardScreen extends StatelessWidget {
@@ -97,15 +99,14 @@ class DashboardScreen extends StatelessWidget {
                   'Revisit what mattered to you on previous days.',
               icon: Icons.book_outlined,
               onTap: () {
-                // Later: navigate to reflections history
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const CheckInHistoryScreen(),
+    ),
+  );
+},
+
 
 class _DashboardCard extends StatelessWidget {
   final String title;
