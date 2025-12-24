@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
-import 'role_selection.dart';
 
-
-class ModeSelectionScreen extends StatelessWidget {
-  const ModeSelectionScreen({super.key});
+class RoleSelectionScreen extends StatelessWidget {
+  const RoleSelectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F7F9),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
+        title: const Text('Your Role'),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 20),
             const Text(
-              'Welcome to CareSpace',
+              'Tell us a bit about yourself',
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 24,
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 12),
             const Text(
-              'Choose how you would like to use the app.',
+              'This helps CareSpace adapt its tone and experience for you.',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
@@ -32,31 +36,25 @@ class ModeSelectionScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
 
-            // General Public Card
-            _ModeCard(
-              title: 'General Public',
-              subtitle: 'For everyday mental well-being and self-reflection',
-              icon: Icons.favorite_outline,
+            _RoleCard(
+              title: 'Student',
+              subtitle:
+                  'Medical, dental, nursing, psychology, or other healthcare students',
+              icon: Icons.school_outlined,
               onTap: () {
-                // Later: save mode = public
+                // Later: save role = student
               },
             ),
 
             const SizedBox(height: 20),
 
-            // Healthcare Mode Card
-            _ModeCard(
-              title: 'Healthcare & Students',
+            _RoleCard(
+              title: 'Working Professional',
               subtitle:
-                  'For healthcare students and professionals navigating demanding environments',
-              icon: Icons.local_hospital_outlined,
+                  'Healthcare professionals currently working in clinical or related roles',
+              icon: Icons.badge_outlined,
               onTap: () {
-                navigator.push(
-                  context,
-                  materialpageroute(
-                    builder: (_) => const RoleSelectionScreen(),                 
-                ),
-                );
+                // Later: save role = professional
               },
             ),
           ],
@@ -66,13 +64,13 @@ class ModeSelectionScreen extends StatelessWidget {
   }
 }
 
-class _ModeCard extends StatelessWidget {
+class _RoleCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icon;
   final VoidCallback onTap;
 
-  const _ModeCard({
+  const _RoleCard({
     required this.title,
     required this.subtitle,
     required this.icon,
